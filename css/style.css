@@ -1,0 +1,166 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template:
+        "header" 90px
+        "navbar" 50px
+        "main"   auto
+        "aside"  auto
+        "footer" 50px
+        / 100%; 
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem 0;
+    gap: 0.5rem;
+    background-color: lightskyblue;
+}
+
+.navbar {
+    grid-area: navbar;
+    background-color: lightsalmon;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 992px;
+    list-style: none;
+}
+
+.menu__item {
+    padding: 0.5rem;
+}
+
+.menu__link {
+    display: block;
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    border-radius: 20px;
+    background-color: brown;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.main {
+    grid-area: main;
+    padding: 1rem;
+    background-color: lightpink;
+}
+
+.card-container {
+    display: grid;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 250px;
+    border: 1px solid #333;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 0px rgb(133, 96, 101);
+}
+
+.aside {
+    grid-area: aside;
+    background-color: lightseagreen;
+}
+
+.aside__text {
+    padding: 0 1rem;
+    text-align: left;
+}
+.footer {
+    grid-area: footer;
+    padding: 0 1rem;
+    background-color: lightslategray;
+}
+
+/*
+Media brackpoints:
+    X-Small < 576px
+    Small >= 576px
+    Medium >= 768px
+    Large >= 992px
+    X-Large >= 1200px
+    XX-Large >= 1400px
+    Resourse: Breackpoints Boostrap v5.0 https://getbootstrap.com/docs/5.0/layout/breakpoints/
+*/
+
+@media screen and (max-width: 576px) { /* Small */
+    body {
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (min-width: 768px) { /* Medium */
+    
+    .grid-container {
+        grid-template:
+        "header header" 90px
+        "navbar navbar" 50px
+        "main   aside" auto
+        "footer footer" 50px;
+    }
+
+    .card-container {
+        gap: 0.5rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (min-width: 992px) { /* Large */
+
+    .card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1200px) { /* X-Large */
+    
+    .grid-container {
+        grid-template:
+        "header header header" 90px
+        "navbar main   aside" auto
+        "footer footer footer" 50px;
+    }
+
+    .navbar {
+        width: 150px;
+    }
+
+    .menu {
+        margin-top: 1rem;
+        flex-direction: column;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1390px) { /* XX-Large (1400px) */
+    .card-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
